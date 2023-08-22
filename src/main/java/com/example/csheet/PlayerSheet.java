@@ -13,6 +13,23 @@ public class PlayerSheet {
         _abilityScores.put("Charisma",8);
         _abilityScores.put("Intelligence",7);
         _abilityScores.put("Wisdom",10);
+
+        _proficiencies = new ArrayList<>();
+        _proficiencies.add(new Proficiency("Dexterity","Stealth",true));
+        _proficiencies.add(new Proficiency("Charisma","Healf",true));
+        _proficiencies.add(new Proficiency("Strength","heai",true));
+        _proficiencies.add(new Proficiency("Intelligence","heai",true));
+        _proficiencies.add(new Proficiency("Wisdom","heai",true));
+        _proficiencies.add(new Proficiency("Dexterity","Stealth",true));
+        _proficiencies.add(new Proficiency("Charisma","Healf",true));
+        _proficiencies.add(new Proficiency("Strength","heai",true));
+        _proficiencies.add(new Proficiency("Intelligence","heai",true));
+        _proficiencies.add(new Proficiency("Wisdom","heai",true));
+        _proficiencies.add(new Proficiency("Dexterity","Stealth",true));
+        _proficiencies.add(new Proficiency("Charisma","Healf",true));
+        _proficiencies.add(new Proficiency("Strength","heai",true));
+        _proficiencies.add(new Proficiency("Intelligence","heai",true));
+        _proficiencies.add(new Proficiency("Wisdom","heai",true));
     }
     String spellCastingAbility;
     int spellSaveDC;
