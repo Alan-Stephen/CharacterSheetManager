@@ -30,13 +30,16 @@ public class PlayerSheet {
         _proficiencies.add(new Proficiency("Strength","heai",true));
         _proficiencies.add(new Proficiency("Intelligence","heai",true));
         _proficiencies.add(new Proficiency("Wisdom","heai",true));
+
+        _profBonus = 10;
     }
-    String spellCastingAbility;
-    int spellSaveDC;
-    int spellAttackBonus;
-    Spellbook spellbook;
-    int numHitDic;
-    int hitDice;
+
+    String _spellCastingAbility;
+    int _spellSaveDC;
+    int _spellAttackBonus;
+    Spellbook _spellbook;
+    int _numHitDic;
+    int _hitDice;
     String _name;
     String _race;
     String characterClass;
