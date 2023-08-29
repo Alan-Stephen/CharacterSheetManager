@@ -11,10 +11,8 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         PlayerSheet playerSheet = new PlayerSheet();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CSheetfxml.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        HelloController controller = fxmlLoader.getController();
-        controller.displayCharacter(playerSheet);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

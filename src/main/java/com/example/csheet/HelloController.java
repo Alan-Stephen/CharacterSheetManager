@@ -12,6 +12,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
@@ -30,8 +31,6 @@ public class HelloController {
         VBox abilityAndProffenciesList = new VBox();
         String cssStyle = """
                 -fx-background-color: #c2c2c2;
-                -fx-border-color: black;
-                -fx-border-width: 3;
                 """;
         abilityAndProffenciesList.setStyle(cssStyle);
 
@@ -39,28 +38,46 @@ public class HelloController {
             HBox abilityProffEntry = new HBox();
             String abilityProffEntryStyle = """
                     -fx-border-color: black;
-                    -fx-border-width: 2;
+                    -fx-border-width: 3 0 0 0;
                     """;
             abilityProffEntry.setStyle(abilityProffEntryStyle);
 
             VBox abilityEntry = new VBox();
-            abilityEntry.setAlignment(Pos.CENTER);
+            String abilityEntryStyle = """
+                    -fx-alignment: center; 
+                    -fx-border-color: black;
+                    -fx-border-width: 0 3 0 0;
+                    """;
+            abilityEntry.setStyle(abilityEntryStyle);
             VBox proffsEntry = new VBox();
             ArrayList<Proficiency> proficienciesRelatedtoAbility = new ArrayList<>();
 
+            String abilityNameStyle = """
+                    -fx-font-family: 'fantasy'; 
+                    -fx-font-weight: bold;
+                    -fx-min-width: 100;
+                    -fx-alignment: center;
+                    """;
             Label abilityName = new Label(entry.getKey());
-            abilityName.setMinWidth(80);
-            abilityName.setAlignment(Pos.CENTER);
+            abilityName.setStyle(abilityNameStyle);
             TextField abilityScore = new TextField(entry.getValue().toString());
 
             String abilityScoreStyle = """
-            -fx-font-size: 15;
-            -fx-max-width: 40;
+            -fx-font-size: 17;
+            -fx-max-width: 45;
+            -fx-alignment: center;
+            -fx-background-color: #c2c2c2;
             """;
             abilityScore.setStyle(abilityScoreStyle);
 
 
+            String abilityModifierStyle = """
+                    -fx-font-weight: bold;
+                    -fx-font-size: 10;
+                    """;
+
             Label abilityModifier = new Label(Integer.toString((entry.getValue() - 10) / 2));
+            abilityModifier.setStyle(abilityModifierStyle);
 
             abilityScore.textProperty().addListener((observable, oldValue, newValue) -> {
                 if (!newValue.matches("/^?[0-9]*$/")) {
@@ -79,12 +96,19 @@ public class HelloController {
                 System.out.println(entry.getKey());
                 System.out.println(proficiency._abilityScore);
                 if (Objects.equals(entry.getKey(), proficiency._abilityScore)) {
+                    String profCss = """
+                            -fx-padding: 0 15 5 10;
+                            """;
                     HBox prof = new HBox();
+                    prof.setStyle(profCss);
+
+                    String checkBoxCss = """
+                                        """;
                     CheckBox checkBox = new CheckBox();
+                    checkBox.setStyle(checkBoxCss);
                     checkBox.setSelected(proficiency._hasProficiency);
                     checkBox.selectedProperty().addListener((observableValue, oldVal, newVal) ->
                             proficiency._hasProficiency = newVal);
-
 
                     Label proffName = new Label(proficiency._name);
                     prof.getChildren().add(checkBox);
