@@ -13,6 +13,8 @@ public class HelloApplication extends Application {
         PlayerSheet playerSheet = new PlayerSheet();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CSheetfxml.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        SheetController controller = fxmlLoader.getController();
+        controller.loadCharacterSheet(playerSheet);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

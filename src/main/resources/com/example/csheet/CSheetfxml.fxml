@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csheet.SheetController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1366.0" stylesheets="@styles.css">
+         <children>
+            <VBox alignment="CENTER" prefHeight="103.0" prefWidth="221.0" styleClass="abilityClass" stylesheets="@styles.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1145.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField maxWidth="342.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="103.0" styleClass="charName" />
+                  <Label text="Character Name" />
+               </children>
+            </VBox>
+            <VBox layoutX="255.0" layoutY="134.0" prefHeight="314.0" prefWidth="262.0" styleClass="abilityClass" stylesheets="@styles.css" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="134.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="64.0" prefWidth="215.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="64.0" prefWidth="79.0">
+                           <children>
+                              <TextField fx:id="ac" styleClass="abilityScore" text="20" />
+                              <Label prefHeight="25.0" prefWidth="34.0" styleClass="acLabel" text="AC" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="64.0" prefWidth="79.0">
+                           <children>
+                              <TextField fx:id="speed" maxWidth="81.0" prefHeight="39.0" prefWidth="81.0" styleClass="abilityScore" text="30" />
+                              <Label prefHeight="25.0" prefWidth="76.0" styleClass="acLabel" text=" Speed" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="7.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="85.0" prefWidth="258.0" styleClass="abilityClass">
+                     <children>
+                        <VBox prefHeight="115.0" prefWidth="70.0" styleClass="classWithSmallerLabels">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <TextField fx:id="maxHP" text="200" />
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="50.0" text="MAX HP" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="7.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="classWithSmallerLabels">
+                                 <children>
+                                    <TextField fx:id="tempHP" text="12" />
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="50.0" text="TEMP HP" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="7.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </VBox>
+                        <VBox prefHeight="86.0" prefWidth="74.0" styleClass="classWithSmallerLabels">
+                           <children>
+                              <TextField fx:id="currentHP" maxWidth="136.0" prefHeight="56.0" prefWidth="74.0" style="-fx-font-size: 20;" styleClass="currHp" text="200">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font></TextField>
+                              <Label alignment="CENTER" prefHeight="13.0" prefWidth="71.0" text="CURRENT HP" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="71.0" prefWidth="63.0" styleClass="classWithSmallerLabels">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="36.0" prefWidth="127.0">
+                                 <children>
+                                    <TextField fx:id="toModify" alignment="CENTER" maxWidth="101.0" prefHeight="35.0" prefWidth="101.0">
+                                       <VBox.margin>
+                                          <Insets left="-6.0" />
+                                       </VBox.margin></TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <HBox alignment="CENTER" prefHeight="34.0" prefWidth="77.0">
+                                 <children>
+                                    <Button fx:id="addHP" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" styleClass="addButton" text="+" />
+                                    <Button fx:id="removeHP" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" styleClass="removeButton" text="-" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="3.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="abilityClass">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="55.0" prefWidth="116.0">
+                           <children>
+                              <TextField maxWidth="89.0" prefHeight="39.0" prefWidth="89.0" />
+                              <Label prefHeight="16.0" prefWidth="95.0" text="Max Hit Die" />
+                           </children>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="55.0" prefWidth="122.0">
+                           <children>
+                              <TextField />
+                              <Label text="Current Hit Die" />
+                           </children>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <VBox prefHeight="57.0" prefWidth="258.0" styleClass="abilityClass">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="276.0" styleClass="deathSavingThrows">
+                           <children>
+                              <CheckBox mnemonicParsing="false" />
+                              <CheckBox mnemonicParsing="false" />
+                              <CheckBox mnemonicParsing="false" prefHeight="34.0" prefWidth="186.0" />
+                              <Label prefHeight="16.0" prefWidth="461.0" text="Death Throw Success" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="266.0" styleClass="deathSavingThrows">
+                           <children>
+                              <CheckBox mnemonicParsing="false" />
+                              <CheckBox mnemonicParsing="false" />
+                              <CheckBox mnemonicParsing="false" />
+                              <Label prefHeight="16.0" prefWidth="188.0" text="Death Throw Failure" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox layoutX="3.0" layoutY="110.0" prefHeight="110.0" prefWidth="212.0" styleClass="proffAndInspo" stylesheets="@styles.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="110.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="212.0">
+                     <children>
+                        <TextField maxHeight="48.0" maxWidth="64.0" prefHeight="48.0" prefWidth="64.0" text="15">
+                           <font>
+                              <Font size="1.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="72.0" text="Intiative">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="212.0">
+                     <children>
+                        <TextField maxHeight="39.0" maxWidth="24.0" prefHeight="15.0" prefWidth="24.0" text="20">
+                           <font>
+                              <Font size="1.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="86.0" text="Proffenciency">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="212.0">
+                     <children>
+                        <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="27.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></CheckBox>
+                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="81.0" text="Inspiration">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="9.0" />
+               </padding></VBox>
+            <VBox alignment="CENTER" layoutX="220.0" prefHeight="103.0" prefWidth="241.0" styleClass="abilityClass" stylesheets="@styles.css" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="905.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <TextField maxWidth="98.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="84.0" styleClass="charInfo" text="Barbarian, 15" />
+                              <Label alignment="CENTER" prefHeight="16.0" prefWidth="99.0" styleClass="charInfoLabel" text="Class,Level" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <TextField maxWidth="98.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="138.0" styleClass="charInfo" text="Squllar" />
+                              <Label alignment="CENTER" prefHeight="16.0" prefWidth="99.0" styleClass="charInfoLabel" text="Background" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="8.0" prefWidth="218.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <TextField maxWidth="98.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="84.0" styleClass="charInfo" text="Race" />
+                              <Label alignment="CENTER" prefHeight="16.0" prefWidth="99.0" styleClass="charInfoLabel" text="Race, Age" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <TextField maxWidth="98.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="140.0" styleClass="charInfo" text="Squllar" />
+                              <Label alignment="CENTER" prefHeight="16.0" prefWidth="99.0" styleClass="charInfoLabel" text="Alignment" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="-1.0" layoutY="254.0" prefHeight="435.0" prefWidth="247.0" styleClass="abilityClass" stylesheets="@styles.css">
+               <children>
+                  <HBox prefHeight="15.0" prefWidth="214.0" styleClass="featureTitleBar">
+                     <children>
+                        <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="214.0" styleClass="featureTitle" text="Features " />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="20.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" text="+">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <ScrollPane hbarPolicy="NEVER" hmax="10.0" prefHeight="435.0" prefWidth="247.0" styleClass="featureScollPane" stylesheets="@styles.css" vbarPolicy="NEVER" vmax="10.0">
+                     <content>
+                        <VBox fx:id="featureList" alignment="TOP_CENTER" prefHeight="460.0" prefWidth="230.0" styleClass="featureVBox" />
+                     </content></ScrollPane>
+               </children>
+            </VBox>
+            <VBox fx:id="abilityAndProffs" layoutX="536.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="214.0" stylesheets="@styles.css" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="536.0" AnchorPane.topAnchor="0.0" />
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

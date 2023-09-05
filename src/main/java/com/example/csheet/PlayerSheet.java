@@ -1,11 +1,15 @@
 package com.example.csheet;
 
+import javafx.util.Pair;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PlayerSheet {
     PlayerSheet(){
+
+        _maxHitPoints = 0;
         _abilityScores = new HashMap<>();
         _abilityScores.put("Strength",20);
         _abilityScores.put("Consitution",19);
@@ -30,10 +34,17 @@ public class PlayerSheet {
         _proficiencies.add(new Proficiency("Strength","heai",true));
         _proficiencies.add(new Proficiency("Intelligence","heai",true));
         _proficiencies.add(new Proficiency("Wisdom","heai",true));
+        _proficiencies.add(new Proficiency("Wisdom","heai",true));
+        _proficiencies.add(new Proficiency("Wisdom","heai",true));
+        _proficiencies.add(new Proficiency("Wisdom","heai",true));
 
         _profBonus = 10;
+
+        _features = new ArrayList<>();
+        _features.add(new Pair<>("Hello","Does 13d10 to everyone and kills dm"));
     }
 
+    ArrayList<Pair<String, String>> _features;
     String _spellCastingAbility;
     int _spellSaveDC;
     int _spellAttackBonus;
