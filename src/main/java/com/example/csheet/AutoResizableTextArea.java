@@ -15,9 +15,7 @@ public class AutoResizableTextArea extends TextArea {
             applyCss();
             Node text = lookup(".text");
 
-            prefHeightProperty().bind(Bindings.createDoubleBinding(() -> {
-                return getFont().getSize() + text.getBoundsInLocal().getHeight();
-            }, text.boundsInLocalProperty()));
+            prefHeightProperty().bind(Bindings.createDoubleBinding(() -> getFont().getSize() + text.getBoundsInLocal().getHeight(), text.boundsInLocalProperty()));
 
             text.boundsInLocalProperty().addListener((observableBoundsAfter, boundsBefore, boundsAfter) -> {
                 Platform.runLater(this::requestLayout);

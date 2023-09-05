@@ -41,6 +41,10 @@ public class SheetController {
     TextField tempHP;
     @FXML
     VBox featureList;
+    @FXML
+    CheckBox isDeletable;
+    @FXML
+    Button addFeature;
 
     public void loadCharacterSheet(PlayerSheet sheet) {
         loadAbilitiesAndProffs(sheet);
@@ -49,39 +53,22 @@ public class SheetController {
         loadFeatures(sheet);
     }
 
-
     private void loadFeatures(PlayerSheet sheet) {
         for (Pair<String,String> feature: sheet._features){
-            VBox pane = new VBox();
-            pane.getStyleClass().add("individualFeature");
-            HBox title = new HBox();
 
-            Button dropDown = new Button(">");
-            TextField field = new TextField(feature.getKey());
-            field.getStyleClass().add("featureName");
+            FeaturePane currFeature = new FeaturePane(feature,isDeletable,featureList,sheet);
 
-            title.getChildren().addAll(dropDown,field, new Button("x"));
-            pane.getChildren().add(title);
-
-            AutoResizableTextArea description = new AutoResizableTextArea(feature.getValue());
-            description.getStyleClass().add("featureDescription");
-
-            dropDown.setOnAction(actionEvent -> {
-                if (pane.getChildren().size() == 1) {
-                    dropDown.setText("↓");
-                    pane.getChildren().add(description);
-                } else {
-                    dropDown.setText(">");
-                    pane.getChildren().remove(1);
-                }
-            });
-
-            pane.sceneProperty().addListener((observableValue, scene, t1) -> {
-                pane.setMinHeight(title.getPrefHeight() + description.getPrefHeight());
-            });
-
-            featureList.getChildren().add(pane);
+            VBox.setVgrow(featureList,Priority.ALWAYS);
+            featureList.getChildren().add(currFeature);
         }
+
+        addFeature.setOnAction(actionEvent -> {
+            Pair<String, String> feature = new Pair<>("Feature Name", "Feature Description");
+            sheet._features.add(feature);
+
+            FeaturePane featurePane = new FeaturePane(feature,isDeletable,featureList,sheet);
+            featureList.getChildren().add(featurePane);
+        });
     }
 
     private void loadAbilitiesAndProffs(PlayerSheet sheet) {

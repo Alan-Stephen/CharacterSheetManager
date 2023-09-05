@@ -41,7 +41,12 @@ public class PlayerSheet {
         _profBonus = 10;
 
         _features = new ArrayList<>();
-        _features.add(new Pair<>("Hello","Does 13d10 to everyone and kills dm"));
+        _features.add(new Pair<>("1","Does 13d10 to everyone and kills dm"));
+        _features.add(new Pair<>("2","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
+        _features.add(new Pair<>("3","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
+        _features.add(new Pair<>("4","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
+        _features.add(new Pair<>("5","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
+        _features.add(new Pair<>("6","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
     }
 
     ArrayList<Pair<String, String>> _features;

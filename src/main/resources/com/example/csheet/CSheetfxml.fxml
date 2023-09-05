@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csheet.SheetController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1367.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csheet.SheetController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1366.0" stylesheets="@styles.css">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1370.0" stylesheets="@styles.css">
          <children>
             <VBox alignment="CENTER" prefHeight="103.0" prefWidth="221.0" styleClass="abilityClass" stylesheets="@styles.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1145.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -21,7 +21,7 @@
                   <Label text="Character Name" />
                </children>
             </VBox>
-            <VBox layoutX="255.0" layoutY="134.0" prefHeight="314.0" prefWidth="262.0" styleClass="abilityClass" stylesheets="@styles.css" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="134.0">
+            <VBox layoutX="255.0" layoutY="110.0" prefHeight="314.0" prefWidth="262.0" styleClass="abilityClass" stylesheets="@styles.css" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="110.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="64.0" prefWidth="215.0">
                      <children>
@@ -271,22 +271,22 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutX="-1.0" layoutY="254.0" prefHeight="435.0" prefWidth="247.0" styleClass="abilityClass" stylesheets="@styles.css">
+            <VBox layoutY="234.0" prefHeight="381.0" prefWidth="247.0" styleClass="abilityClass" stylesheets="@styles.css">
                <children>
                   <HBox prefHeight="15.0" prefWidth="214.0" styleClass="featureTitleBar">
                      <children>
-                        <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" />
+                        <CheckBox fx:id="isDeletable" mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="214.0" styleClass="featureTitle" text="Features " />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="20.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" text="+">
+                        <Button fx:id="addFeature" mnemonicParsing="false" prefHeight="26.0" prefWidth="20.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" text="+">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
-                  <ScrollPane hbarPolicy="NEVER" hmax="10.0" prefHeight="435.0" prefWidth="247.0" styleClass="featureScollPane" stylesheets="@styles.css" vbarPolicy="NEVER" vmax="10.0">
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="343.0" prefWidth="247.0" styleClass="featureScollPane" stylesheets="@styles.css" vbarPolicy="ALWAYS">
                      <content>
-                        <VBox fx:id="featureList" alignment="TOP_CENTER" prefHeight="460.0" prefWidth="230.0" styleClass="featureVBox" />
+                        <VBox fx:id="featureList" alignment="TOP_CENTER" maxHeight="2000.0" prefHeight="1000.0" prefWidth="232.0" styleClass="featureVBox" />
                      </content></ScrollPane>
                </children>
             </VBox>
