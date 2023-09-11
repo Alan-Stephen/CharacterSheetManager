@@ -45,12 +45,54 @@ public class SheetController {
     CheckBox isDeletable;
     @FXML
     Button addFeature;
-
+    @FXML
+    TextField characterName;
+    @FXML
+    TextField background;
+    @FXML
+    TextField playerClass;
+    @FXML
+    TextField level;
+    @FXML
+    TextField alignment;
+    @FXML
+    TextField race;
     public void loadCharacterSheet(PlayerSheet sheet) {
         loadAbilitiesAndProffs(sheet);
         loadHealthModule(sheet);
         loadSpeedAC(sheet);
         loadFeatures(sheet);
+        bindCharacterInfo(sheet);
+    }
+
+    private void bindCharacterInfo(PlayerSheet sheet) {
+        characterName.textProperty().addListener((observableValue, s, t1) -> {
+            sheet._name = characterName.getText();
+        });
+
+        alignment.textProperty().addListener((observableValue, s, t1) -> {
+            sheet._alignment= alignment.getText();
+        });
+
+        background.textProperty().addListener((observableValue, s, t1) -> {
+            sheet._background= background.getText();
+        });
+
+        race.textProperty().addListener((observableValue, s, t1) -> {
+            sheet._raceAge= race.getText();
+        });
+
+        playerClass.textProperty().addListener((observableValue, s, t1) -> {
+            sheet._class = playerClass.getText();
+        });
+
+        level.textProperty().addListener((observableValue, old, newValue) -> {
+            if (!newValue.matches("/^?[0-9]*$/")) {
+                level.setText(newValue.replaceAll("\\D", ""));
+            } if(!level.getText().equals("")) {
+                sheet._level = Integer.parseInt(level.getText());
+            }
+        });
     }
 
     private void loadFeatures(PlayerSheet sheet) {
@@ -104,7 +146,7 @@ public class SheetController {
             for(Proficiency proficiency: sheet._proficiencies){
                 if (Objects.equals(abilityScore.getKey(), proficiency._abilityScore)) {
                     HBox prof = new HBox();
-                    prof.setAlignment(Pos.CENTER);
+                    prof.setAlignment(Pos.CENTER_LEFT);
 
                     CheckBox hasProf = new CheckBox();
                     hasProf.setSelected(proficiency._hasProficiency);
