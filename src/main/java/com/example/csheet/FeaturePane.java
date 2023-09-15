@@ -1,5 +1,7 @@
 package com.example.csheet;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -8,12 +10,12 @@ import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 
 public class FeaturePane extends VBox {
-    FeaturePane(Pair<String, String> feature, CheckBox isDeletable, VBox featureList,PlayerSheet sheet){
+    FeaturePane(Feature feature, CheckBox isDeletable, VBox featureList,PlayerSheet sheet){
         this.getStyleClass().add("individualFeature");
         HBox title = new HBox();
 
         Button dropDown = new Button(">");
-        TextField field = new TextField(feature.getKey());
+        TextField field = new TextField(feature._title);
         field.getStyleClass().add("featureName");
 
         Button close = new Button("x");
@@ -21,14 +23,13 @@ public class FeaturePane extends VBox {
             if(isDeletable.isSelected()) {
                 featureList.getChildren().remove(this);
                 sheet._features.remove(feature);
-                System.out.println(sheet._features.toString());
             }
         });
 
         title.getChildren().addAll(dropDown,field, close);
         this.getChildren().add(title);
 
-        AutoResizableTextArea description = new AutoResizableTextArea(feature.getValue());
+        AutoResizableTextArea description = new AutoResizableTextArea(feature._desciption);
         //description.getStyleClass().add("featureDescription");
         // line above brekas the thing
 
@@ -40,6 +41,14 @@ public class FeaturePane extends VBox {
                 dropDown.setText(">");
                 this.getChildren().remove(1);
             }
+        });
+
+        field.textProperty().addListener((observableValue, s, t1) -> {
+            feature._title= field.getText();
+        });
+
+        description.textProperty().addListener((observableValue, s, t1) -> {
+            feature._desciption = description.getText();
         });
     }
 }

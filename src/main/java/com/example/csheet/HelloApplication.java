@@ -16,6 +16,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CSheetfxml.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         SheetController controller = fxmlLoader.getController();
+        playerSheet.loadFromJson("src/main/resources/com/example/csheet/characterPerm.json");
         controller.loadCharacterSheet(playerSheet);
 
         stage.setOnCloseRequest(windowEvent -> {

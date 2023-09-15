@@ -3,63 +3,99 @@ package com.example.csheet;
 import javafx.util.Pair;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-import java.io.FileWriter;
-import java.io.Serializable;
+import javax.security.auth.callback.TextInputCallback;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static javafx.application.Platform.exit;
+
 public class PlayerSheet implements java.io.Serializable {
     PlayerSheet(){
 
+        _resources = new ArrayList<>();
         _maxHitPoints = 0;
         _abilityScores = new HashMap<>();
-        _abilityScores.put("Strength",20);
-        _abilityScores.put("Consitution",19);
-        _abilityScores.put("Dexterity",18);
-        _abilityScores.put("Charisma",8);
-        _abilityScores.put("Intelligence",7);
-        _abilityScores.put("Wisdom",10);
-
         _proficiencies = new ArrayList<>();
-        _proficiencies.add(new Proficiency("Dexterity","Saving Throw",false));
-        _proficiencies.add(new Proficiency("Dexterity","Stealth",false));
-        _proficiencies.add(new Proficiency("Dexterity","Acrobatics",false));
-        _proficiencies.add(new Proficiency("Dexterity","Slight of Hand",false));
-        _proficiencies.add(new Proficiency("Strength","Saving Throw",false));
-        _proficiencies.add(new Proficiency("Strength","Athletics",false));
-        _proficiencies.add(new Proficiency("Consitution","Saving Throw",false));
-        _proficiencies.add(new Proficiency("Intelligence","Saving Throw",false));
-        _proficiencies.add(new Proficiency("Intelligence","Arcana",false));
-        _proficiencies.add(new Proficiency("Intelligence","History",false));
-        _proficiencies.add(new Proficiency("Intelligence","Investigation",false));
-        _proficiencies.add(new Proficiency("Intelligence","Nature",false));
-        _proficiencies.add(new Proficiency("Intelligence","Religion",false));
-        _proficiencies.add(new Proficiency("Wisdom","Saving Throw",false));
-        _proficiencies.add(new Proficiency("Wisdom","Insight",false));
-        _proficiencies.add(new Proficiency("Wisdom","Animal Handling",false));
-        _proficiencies.add(new Proficiency("Wisdom","Medicine",false));
-        _proficiencies.add(new Proficiency("Wisdom","Perception",false));
-        _proficiencies.add(new Proficiency("Wisdom","Survival",false));
-        _proficiencies.add(new Proficiency("Charisma","Saving Throw",false));
-        _proficiencies.add(new Proficiency("Charisma","Deception",false));
-        _proficiencies.add(new Proficiency("Charisma","Intimidation",false));
-        _proficiencies.add(new Proficiency("Charisma","Performance",false));
-        _proficiencies.add(new Proficiency("Charisma","Persuasion",false));
 
         _profBonus = 10;
 
         _features = new ArrayList<>();
-        _features.add(new Pair<>("1","Does 13d10 to everyone and kills dm"));
-        _features.add(new Pair<>("2","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
-        _features.add(new Pair<>("3","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
-        _features.add(new Pair<>("4","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
-        _features.add(new Pair<>("5","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
-        _features.add(new Pair<>("6","Does 13d10 to everyone and kills dDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmDoes 13d10 to everyone and kills dmm"));
     }
 
+    public void loadFromJson(String jsonPath) {
+        JSONParser parser = new JSONParser();
+
+        try {
+            Reader reader = new FileReader(jsonPath);
+            JSONObject jsonObject = (JSONObject) parser.parse(reader);
+            System.out.println(jsonObject);
+
+            _spellCastingAbility = (String) jsonObject.get("spellCastingAbility");
+            _spellSaveDC = (int) (long) jsonObject.get("spellSaveDC");
+            _numHitDice = (int) (long) jsonObject.get("numHitDice");
+            _hitDice = (int) (long) jsonObject.get("hitDice");
+            _name = (String) jsonObject.get("name");
+            _spellAttackBonus = (int) (long) jsonObject.get("spellAttackBonus");
+            _characterClass = (String) jsonObject.get("characterClass");
+            _level = (int) (long) jsonObject.get("level");
+            _profBonus = (int) (long) jsonObject.get("profBonus");
+            _currentHitPoints = (int) (long) jsonObject.get("currHitPoints");
+            _maxHitPoints = (int) (long) jsonObject.get("maxHitPoints");
+            _tempHitPoints = (int) (long) jsonObject.get("tempHitPoints");
+            _deathFailures = (int) (long) jsonObject.get("deathFailures");
+            _deathSuccesses = (int) (long) jsonObject.get("deathSuccesses");
+            _armourClass = (int) (long) jsonObject.get("ac");
+            _speed = (int) (long) jsonObject.get("speed");
+            _raceAge = (String) jsonObject.get("raceAge");
+            _alignment = (String) jsonObject.get("alignment");
+            _class = (String) jsonObject.get("class");
+            _background = (String) jsonObject.get("background");
+
+            JSONArray features = (JSONArray) jsonObject.get("features");
+            for (Object obj: features) {
+                JSONObject featureObject = (JSONObject) obj;
+                Feature feature= new Feature((String) featureObject.get("name"),
+                        (String) featureObject.get("description"));
+                _features.add(feature);
+            }
+
+            JSONObject abilityScores = (JSONObject) jsonObject.get("abilityScores");
+            for (Object obj: abilityScores.entrySet()) {
+                Map.Entry<String, Long> scores = (Map.Entry<String, Long>) obj;
+                _abilityScores.put(scores.getKey(),(int) (long) scores.getValue());
+            }
+
+            JSONObject proffs = (JSONObject) jsonObject.get("proffs");
+            for (Object obj: proffs.entrySet()) {
+                Map.Entry<String,JSONObject> prof = (Map.Entry<String, JSONObject>) obj;
+                boolean hasProf = (boolean) prof.getValue().get("hasProff");
+                String abilityScore = (String) prof.getValue().get("abilityScore");
+                Proficiency proficiency = new Proficiency(abilityScore,prof.getKey(),hasProf);
+                _proficiencies.add(proficiency);
+            }
+
+            JSONArray resources = (JSONArray) jsonObject.get("resources");
+
+            for (Object obj: resources){
+                JSONObject json = (JSONObject) obj;
+                String name = (String) json.get("name");
+                int current = (int) (long) json.get("current");
+                int total = (int) (long) json.get("total");
+                Resource resource = new Resource(total,current,name);
+
+                _resources.add(resource);
+            }
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+            exit();
+        }
+    }
     public void toJson(String jsonPath){
         JSONObject jo = new JSONObject();
         jo.put("spellCastingAbility",_spellCastingAbility);
@@ -83,9 +119,12 @@ public class PlayerSheet implements java.io.Serializable {
         jo.put("class",_class);
         jo.put("background",_background);
 
-        JSONObject features = new JSONObject();
-        for (Pair<String, String> entry: _features) {
-            features.put(entry.getKey(),entry.getValue());
+        JSONArray features = new JSONArray();
+        for (Feature entry: _features) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name",entry._title);
+            jsonObject.put("description",entry._desciption);
+            features.add(jsonObject);
         }
 
         jo.put("features",features);
@@ -107,6 +146,18 @@ public class PlayerSheet implements java.io.Serializable {
 
         jo.put("proffs",proffs);
 
+        JSONArray resources = new JSONArray();
+
+        for (Resource resource: _resources){
+            JSONObject json = new JSONObject();
+            json.put("name",resource._name);
+            json.put("current",resource._current);
+            json.put("total",resource._total);
+
+            resources.add(json);
+        }
+        jo.put("resources",resources);
+
         try {
             FileWriter writer = new FileWriter(jsonPath);
             System.out.println(jo.toJSONString());
@@ -117,8 +168,7 @@ public class PlayerSheet implements java.io.Serializable {
             e.printStackTrace();
         }
     }
-
-    ArrayList<Pair<String, String>> _features;
+    ArrayList<Feature> _features;
     String _spellCastingAbility;
     int _spellSaveDC;
     int _spellAttackBonus;
@@ -145,4 +195,5 @@ public class PlayerSheet implements java.io.Serializable {
     String _alignment;
     String _class;
     String _background;
+    ArrayList<Resource> _resources;
 }

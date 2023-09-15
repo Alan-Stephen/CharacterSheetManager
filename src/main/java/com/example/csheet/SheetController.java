@@ -1,5 +1,6 @@
 package com.example.csheet;
 
+import javafx.animation.FadeTransition;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -9,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.util.Pair;
 
 import java.util.Map;
@@ -57,12 +55,33 @@ public class SheetController {
     TextField alignment;
     @FXML
     TextField race;
+    @FXML
+    FlowPane resourceList;
+    @FXML
+    CheckBox isDeletableResources;
+    @FXML
+    Button addResource;
     public void loadCharacterSheet(PlayerSheet sheet) {
         loadAbilitiesAndProffs(sheet);
         loadHealthModule(sheet);
         loadSpeedAC(sheet);
         loadFeatures(sheet);
         bindCharacterInfo(sheet);
+        loadResources(sheet);
+    }
+
+    private void loadResources(PlayerSheet sheet) {
+        for(Resource resource: sheet._resources) {
+            resourceList.getChildren().add(new ResourcePane(resource,resourceList,sheet,isDeletableResources));
+        }
+
+        addResource.setOnAction(actionEvent -> {
+            Resource resource = new Resource(5,0,"new resource");
+            sheet._resources.add(resource);
+            resourceList.getChildren().add(new ResourcePane(resource,resourceList,sheet,isDeletableResources));
+        });
+
+
     }
 
     private void bindCharacterInfo(PlayerSheet sheet) {
@@ -96,7 +115,7 @@ public class SheetController {
     }
 
     private void loadFeatures(PlayerSheet sheet) {
-        for (Pair<String,String> feature: sheet._features){
+        for (Feature feature: sheet._features){
 
             FeaturePane currFeature = new FeaturePane(feature,isDeletable,featureList,sheet);
 
@@ -105,7 +124,7 @@ public class SheetController {
         }
 
         addFeature.setOnAction(actionEvent -> {
-            Pair<String, String> feature = new Pair<>("Feature Name", "Feature Description");
+           Feature feature = new Feature("Feature Name", "Feature Description");
             sheet._features.add(feature);
 
             FeaturePane featurePane = new FeaturePane(feature,isDeletable,featureList,sheet);

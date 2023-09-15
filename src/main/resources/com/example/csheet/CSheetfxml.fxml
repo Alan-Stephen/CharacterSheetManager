@@ -329,7 +329,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutX="255.0" layoutY="289.0" prefHeight="381.0" prefWidth="263.0" styleClass="abilityClass" stylesheets="@styles.css">
+            <VBox layoutX="7.0" layoutY="244.0" prefHeight="426.0" prefWidth="238.0" styleClass="abilityClass" stylesheets="@styles.css">
                <children>
                   <HBox prefHeight="15.0" prefWidth="214.0" styleClass="featureTitleBar">
                      <children>
@@ -342,33 +342,53 @@
                         </Button>
                      </children>
                   </HBox>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="343.0" prefWidth="247.0" styleClass="featureScollPane" stylesheets="@styles.css" vbarPolicy="ALWAYS">
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="413.0" prefWidth="238.0" styleClass="featureScollPane" stylesheets="@styles.css" vbarPolicy="ALWAYS">
                      <content>
-                        <VBox fx:id="featureList" alignment="TOP_CENTER" maxHeight="2000.0" prefHeight="998.0" prefWidth="246.0" styleClass="featureVBox" />
+                        <VBox fx:id="featureList" alignment="TOP_CENTER" maxHeight="2000.0" prefHeight="1001.0" prefWidth="223.0" styleClass="featureVBox" />
                      </content></ScrollPane>
                </children>
             </VBox>
             <VBox fx:id="abilityAndProffs" layoutX="536.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="214.0" stylesheets="@styles.css" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="536.0" AnchorPane.topAnchor="0.0" />
-            <VBox layoutY="246.0" prefHeight="381.0" prefWidth="211.0" styleClass="abilityClass" stylesheets="@styles.css">
+            <VBox layoutX="255.0" layoutY="289.0" prefHeight="184.0" prefWidth="264.0" styleClass="abilityClass" stylesheets="@styles.css">
                <children>
                   <HBox prefHeight="15.0" prefWidth="214.0" styleClass="featureTitleBar">
                      <children>
                         <CheckBox fx:id="isDeletableResources" mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="214.0" styleClass="featureTitle" text="Resources" />
-                        <Button fx:id="addResource" mnemonicParsing="false" prefHeight="26.0" prefWidth="20.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" text="+">
+                        <Button fx:id="addResource" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-border-width: 0 0 7 0; -fx-border-color: gray;" text="+">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="343.0" prefWidth="247.0" styleClass="featureScollPane" stylesheets="@styles.css" vbarPolicy="ALWAYS">
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="152.0" prefWidth="264.0" styleClass="featureScollPane" stylesheets="@styles.css" vbarPolicy="ALWAYS">
                      <content>
-                        <FlowPane fx:id="resourceList" prefHeight="347.0" prefWidth="195.0" />
+                        <FlowPane fx:id="resourceList" prefHeight="396.0" prefWidth="247.0" styleClass="resourceList" stylesheets="@styles.css" />
                      </content>
                   </ScrollPane>
                </children>
             </VBox>
+            <VBox layoutX="253.0" layoutY="481.0" prefHeight="184.0" prefWidth="264.0" styleClass="abilityClass">
+               <children>
+                  <Label alignment="CENTER" prefHeight="16.0" prefWidth="374.0" styleClass="featureTitle" text="Coin Wallet" />
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" spacing="10.0">
+                     <children>
+                        <TextField prefWidth="36.0" style="-fx-background-color: A0B2C6;" />
+                        <TextField style="-fx-background-color: gold;" />
+                        <TextField style="-fx-background-color: silver;" />
+                        <TextField style="-fx-background-color: B87333;" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
